@@ -29,3 +29,11 @@ export const useSignOutAccount = () => {
     mutationFn: signOutAccount,
   });
 };
+export const useCreatePost = () => {
+ const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (post: any) => {
+      return queryClient.setQueryData("posts", (old: any) => [...old, post]);
+    },
+  });
+};
